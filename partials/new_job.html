@@ -1,0 +1,45 @@
+<div ng-controller="NewJobCtrl">
+  <ul class="breadcrumbs">
+    <li><a href="#/jobs">Home</a></li>
+    <li>New Job</li>
+  </ul>
+  <form ng-submit="addJob()">
+    <div class="row">
+      <div class="small-8 columns">
+
+        <div class="row">
+          <div class="small-2 columns">
+            <label for="right-label" class="right inline">Name</label>
+          </div>
+          <div class="small-10 columns">
+            <input type="text" id="right-label" placeholder="First Name" ng-model="firstName">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-2 columns">
+            <label for="right-label" class="right inline">Phone #</label>
+          </div>
+          <div class="small-10 columns">
+            <input type="text" id="right-label" placeholder="Format: 1112223333" ng-model="phone" maxlength="7">
+          </div>
+        </div>
+
+        <div class="row">
+          <select ng-model="type" multiple>
+            <option value="normal">Normal Wash and Fold</option>
+            <option value="organic">Organic Wash and Fold</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="small-8 columns">
+      <div class="row">
+        <button type="submit" class="button" style="float:right">Add Job</button>
+      </div>
+    </div>
+    <div class="small-4 columns"></div>
+  </form>
+</div>
