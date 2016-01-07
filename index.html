@@ -14,20 +14,20 @@
     <body ng-controller="HomeController">
         <div class="container">
             <div class="row">
-                <div class="small-3 medium-4 columns">
+                <div class="small-3 medium-3 columns">
                     <h4>{{siteName}} {{version}}</h4>
                 </div>
-                <div class="small-9 medium-8 columns">
-                    <ul>
-                        <li ng-repeat="linkItem in linkItems">
-                            <a href="{{linkItem.url}}" target="_blank">{{linkItem.name}}</a>
+                <div class="small-9 medium-9 columns">
+                    <ul class="all-jobs">
+                        <li ng-repeat="job in jobs">
+                            <a href="#/job/{{job.id}}">
+                                <div class="medium-3 columns">{{job.time}}</div>
+                                <div class="medium-4 columns">{{job.type}}</div>
+                                <div class="medium-3 columns">{{job.name}}</div>
+                                <div class="medium-2 columns">{{job.status}}</div>
+                            </a>
                         </li>
                     </ul>
-                    <div class="row">
-                        <h2>Let's test firebase out:</h2>
-                        <input type="text" ng-model="data.text"/>
-                        <h1>You said: {{ data.text }}</h1>
-                    </div>  
                 </div>
             </div>
         </div>

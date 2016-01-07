@@ -17,4 +17,22 @@ app.controller('HomeController', function ($scope, $firebaseObject) {
     {'url': 'http://angularjs.org',
      'name': 'AngularJS'}
   ];
+
+  $scope.jobs = [
+    {'id': '1',
+    'time': '1:45pm',
+    'type': 'Normal Wash and Fold',
+    'name': 'Noah Damiani',
+    'status': 'Not Started'},
+    {'id': '2',
+    'time': '10:00am',
+    'type': 'Organic Wash and Fold',
+    'name': 'Patrick Wilson',
+    'status': 'completed'},
+    {'id': '3',
+    'time': '9:00am',
+    'type': 'Normal Wash and Fold',
+    'name': 'Gabby Namm',
+    'status': 'picked up'}
+  ];
 });

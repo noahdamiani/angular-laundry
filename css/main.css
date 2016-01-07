@@ -282,3 +282,7 @@ textarea {
 .container {
     padding: 1em;
 }
+
+.all-jobs {
+    list-style: none;
+}
