@@ -1,3 +1,8 @@
+<div>
+  <h4>Current Jobs</h4>
+  <hr>
+</div>
+
 <ul class="all-jobs">
     <li ng-repeat="job in jobs" class="clearfix"> 
         <a href="#/jobs/{{job.$id}}">
@@ -5,6 +10,7 @@
             <div class="medium-4 columns">{{job.type}}</div>
             <div class="medium-3 columns">{{job.name}}</div>
             <div class="medium-2 columns">{{job.status.details}}</div>
+            <a class="delete-job" ng-click="jobs.$remove(job)"><i class="fa fa-trash"></i></a>
         </a>
     </li>
 </ul>

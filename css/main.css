@@ -287,7 +287,7 @@ textarea {
     list-style: none;
 }
 
-.all-jobs a {
+.all-jobs a:first-child {
     color: inherit;
     display: block;
     height: 100%;
@@ -297,9 +297,20 @@ textarea {
 .all-jobs li {
     border-bottom: 1px solid #d5d5d5;
     padding: 1em 0;
+    position: relative;
 }
 
 .all-jobs li a div:first-of-type {
     font-weight: bold;
+}
+
+a.delete-job {
+    color: red;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    top: 14px;
+    right: 5px;
+    z-index: 10;
 }
 
