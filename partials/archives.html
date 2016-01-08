@@ -1,0 +1,15 @@
+<div>
+  <h4>Archived Jobs</h4>
+  <hr>
+</div>
+
+<ul class="all-jobs">
+    <li ng-repeat="archive in archives" class="clearfix"> 
+        <a href="#">
+            <div class="medium-3 columns">{{archive.createdAt | amCalendar}}</div>
+            <div class="medium-4 columns">{{archive.type}}</div>
+            <div class="medium-3 columns">{{archive.name}}</div>
+            <div class="medium-2 columns">{{archive.status.details}}</div>
+        </a>
+    </li>
+</ul>

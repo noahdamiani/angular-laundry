@@ -285,6 +285,7 @@ textarea {
 
 .all-jobs {
     list-style: none;
+    margin-top: -0.5em;
 }
 
 .all-jobs a:first-child {
@@ -304,13 +305,29 @@ textarea {
     font-weight: bold;
 }
 
-a.delete-job {
+ul.controls {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    z-index: 10;
+    list-style: none;
+}
+
+ul.controls a {
     color: red;
     cursor: pointer;
     font-weight: bold;
-    position: absolute;
-    top: 14px;
-    right: 5px;
-    z-index: 10;
 }
 
+ul.controls li {
+    padding: 0;
+    border: 0;
+}
+
+ul.controls li a.archive-job {
+    font-size: 12px;
+}
+
+.side-nav {
+    list-style: none;
+}

@@ -10,7 +10,10 @@
             <div class="medium-4 columns">{{job.type}}</div>
             <div class="medium-3 columns">{{job.name}}</div>
             <div class="medium-2 columns">{{job.status.details}}</div>
-            <a class="delete-job" ng-click="jobs.$remove(job)"><i class="fa fa-trash"></i></a>
+            <ul class="controls">
+              <li><a class="delete-job" ng-click="jobs.$remove(job)"><i class="fa fa-trash"></i></a></li>
+              <li><a class="archive-job" ng-click="archiveIt(job)"><i class="fa fa-archive"></i></a></li>
+            </ul>
         </a>
     </li>
 </ul>

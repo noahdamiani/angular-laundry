@@ -17,7 +17,11 @@
             <div class="row">
                 <div class="small-3 medium-3 columns">
                     <h4>{{siteName}} {{version}}</h4>
-                    <button class="button" ng-click="go('/new_job')">New Laundry Job</button>   
+                    <button class="button" ng-click="go('/new_job')">New Laundry Job</button>
+                    <ul class="side-nav">
+                        <li><a ng-click="go('/')">Home</a></li>
+                        <li><a ng-click="go('/archives')">Archives</a></li>
+                    </ul> 
                 </div>
                 <div class="small-9 medium-9 columns">
                     <div ng-view></div>
