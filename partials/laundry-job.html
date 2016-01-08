@@ -3,6 +3,15 @@
   <li>{{job.name}}</li>
 </ul>
 
-<div class="row">
-  Dropped off {{job.createdAt | amCalendar}}
+<div>
+  <h1>{{job.name}} <small>{{job.phone | tel}}</small></h1>
+  <p>Dropped off {{job.createdAt | amCalendar}}</p>
+  <p><strong>Notes:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales tempor velit, ac elementum augue aliquet sit amet. Etiam sit amet fermentum enim. Sed vitae dictum ante. </p>
 </div>
+
+<h4>Set Status:</h4>
+<select>
+  <option>not started</option>
+  <option>in progress</option>
+  <option>completed</option>
+</select>

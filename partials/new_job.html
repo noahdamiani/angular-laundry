@@ -1,8 +1,11 @@
-<div ng-controller="NewJobCtrl">
+<div ng-controller="NewJobCtrl" class="new-job">
   <ul class="breadcrumbs">
     <li><a href="#/jobs">Home</a></li>
     <li>New Job</li>
   </ul>
+  <div>
+    <h4>Start a New Load</h4>
+  </div>
   <form ng-submit="addJob()">
     <div class="row">
       <div class="small-8 columns">
@@ -27,7 +30,7 @@
 
         <div class="row">
           <select ng-model="type" multiple>
-            <option value="Normal Wash and Fold">Normal Wash and Fold</option>
+            <option value="Normal Wash and Fold" selected>Normal Wash and Fold</option>
             <option value="Organic Wash and Fold">Organic Wash and Fold</option>
           </select>
         </div>

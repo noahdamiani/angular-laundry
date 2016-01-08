@@ -279,6 +279,12 @@ textarea {
     }
 }
 
+.breadcrumbs {
+    background: #d3d3d3;
+    max-width: 750px;
+    padding: 0.2em 0.5em;
+}
+
 .container {
     padding: 1em;
 }
@@ -286,6 +292,7 @@ textarea {
 .all-jobs {
     list-style: none;
     margin-top: -0.5em;
+    font-size: 14px;
 }
 
 .all-jobs a:first-child {
@@ -330,4 +337,17 @@ ul.controls li a.archive-job {
 
 .side-nav {
     list-style: none;
+}
+
+select[multiple] {
+    background-image: none !important;
+    margin: 0 1em 0.5em 1em;
+    width: 95%;
+}
+
+.new-job h4 {
+    border-bottom: 1px solid #d3d3d3;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    max-width: 750px;
 }
