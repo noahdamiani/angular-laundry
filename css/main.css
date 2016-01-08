@@ -295,8 +295,8 @@ textarea {
 }
 
 .all-jobs li {
-    border-bottom: 1px solid #333;
-    padding: 2em 0;
+    border-bottom: 1px solid #d5d5d5;
+    padding: 1em 0;
 }
 
 .all-jobs li a div:first-of-type {

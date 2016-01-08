@@ -36,7 +36,7 @@ app.controller('HomeController', function ($scope, $location) {
 app.controller('NewJobCtrl', function ($scope, $firebaseArray, $location) {
   var fb = new Firebase("https://angular-laundry.firebaseio.com/jobs");
   $scope.jobs = $firebaseArray(fb);
-
+  
   $scope.addJob = function() {
     var date = new Date();
     var type = $scope.type;
