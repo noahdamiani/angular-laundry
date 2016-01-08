@@ -1,4 +1,5 @@
 var app = angular.module('app', [
+  'ngLoadingSpinner',
   'firebase',
   'ngRoute',
   'laundryControllers',
