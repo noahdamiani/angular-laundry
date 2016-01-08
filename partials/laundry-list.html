@@ -1,7 +1,7 @@
 <ul class="all-jobs">
-    <li ng-repeat="job in jobs">
-        <a href="#/jobs/{{job.id}}">
-            <div class="medium-3 columns">{{job.time}}</div>
+    <li ng-repeat="job in jobs" class="clearfix"> 
+        <a href="#/jobs/{{job.$id}}">
+            <div class="medium-3 columns">{{job.createdAt | amCalendar}}</div>
             <div class="medium-4 columns">{{job.type}}</div>
             <div class="medium-3 columns">{{job.name}}</div>
             <div class="medium-2 columns">{{job.status.details}}</div>

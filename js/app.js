@@ -1,7 +1,8 @@
 var app = angular.module('app', [
   'firebase',
   'ngRoute',
-  'laundryControllers'
+  'laundryControllers',
+  'angularMoment'
   ]);
 
 app.config(['$routeProvider',
@@ -35,17 +36,22 @@ app.controller('HomeController', function ($scope, $location) {
 app.controller('NewJobCtrl', function ($scope, $firebaseArray, $location) {
   var fb = new Firebase("https://angular-laundry.firebaseio.com/jobs");
   $scope.jobs = $firebaseArray(fb);
+
   $scope.addJob = function() {
     var date = new Date();
+    var type = $scope.type;
+
     $scope.jobs.$add({
       name: $scope.firstName,
       phone: $scope.phone,
       createdAt: date.toString(),
-      type: $scope.type,
+      type: type.toString(),
       status: {
         details: 'not started',
         done: false
       }
     });
+
+    $location.path('/jobs');
   };
 });

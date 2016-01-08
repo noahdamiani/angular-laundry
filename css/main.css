@@ -287,3 +287,19 @@ textarea {
     list-style: none;
 }
 
+.all-jobs a {
+    color: inherit;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.all-jobs li {
+    border-bottom: 1px solid #333;
+    padding: 2em 0;
+}
+
+.all-jobs li a div:first-of-type {
+    font-weight: bold;
+}
+
