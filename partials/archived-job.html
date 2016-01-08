@@ -1,0 +1,18 @@
+<ul class="breadcrumbs">
+  <li><a href="#/jobs">Home</a></li>
+  <li>{{archive.phone | tel}}</li>
+</ul>
+
+<div>
+  <h1>{{archive.name}} <small>{{archive.phone | tel}}</small></h1>
+  <p>Dropped off {{archive.createdAt | amCalendar}}</p>
+  <p><strong>Notes:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales tempor velit, ac elementum augue aliquet sit amet. Etiam sit amet fermentum enim. Sed vitae dictum ante. </p>
+</div>
+
+<h4>Update Status:</h4>
+<select>
+  <option value="{{archive.status.details}}" selected>{{archive.status.details}}</option>
+  <option value="in progress">in progress</option>
+  <option value="completed">completed</option>
+  <option value="picked up">picked up</option>
+</select>

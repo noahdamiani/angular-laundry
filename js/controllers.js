@@ -19,8 +19,12 @@ laundryControllers.controller('LaundryJobCtrl', function ($scope, $routeParams, 
   $scope.job = $firebaseObject(fb);
 });
 
-
 laundryControllers.controller('LaundryArchiveCtrl', function ($scope, $firebaseArray) {
   var archives = new Firebase("https://angular-laundry.firebaseio.com/archives");
   $scope.archives = $firebaseArray(archives);
+});
+
+laundryControllers.controller('LaundryArchivedJobCtrl', function ($scope, $routeParams, $firebaseObject) {
+  var archivedJob = new Firebase("https://angular-laundry.firebaseio.com/archives/" + $routeParams.archiveId);
+  $scope.archive = $firebaseObject(archivedJob);
 });

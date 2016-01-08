@@ -5,7 +5,7 @@
 
 <ul class="all-jobs">
     <li ng-repeat="archive in archives" class="clearfix"> 
-        <a href="#">
+        <a href="#/archives/{{archive.$id}}">
             <div class="medium-3 columns">{{archive.createdAt | amCalendar}}</div>
             <div class="medium-4 columns">{{archive.type}}</div>
             <div class="medium-3 columns">{{archive.name}}</div>

@@ -21,6 +21,10 @@ app.config(['$routeProvider',
       templateUrl: 'partials/archives.html',
       controller: 'LaundryArchiveCtrl'
     }).
+    when('/archives/:archiveId', {
+      templateUrl: 'partials/archived-job.html',
+      controller: 'LaundryArchivedJobCtrl'
+    }).
     when('/new_job', {
       templateUrl: 'partials/new_job.html',
       controller: 'NewJobCtrl'
