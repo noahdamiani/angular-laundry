@@ -355,3 +355,14 @@ select[multiple] {
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
+
+.top-user-nav li {
+    padding-right: 0.5em;
+}
+
+.top-user-nav img {
+    border-radius: 50%;
+    width: 30px; 
+    height: 30px;
+    margin-right: 0.5em;
+}

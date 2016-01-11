@@ -10,13 +10,7 @@ var app = angular.module('app', [
 
 app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/auth');
-    
     $stateProvider
-      .state('auth', {
-        url: '/auth',
-        templateUrl: 'partials/auth/authView.html',
-        controller: 'AuthController as auth'
-      })
       .state('laundryList', {
         url: '/jobs',
         templateUrl: 'partials/laundry-list.html',
@@ -44,32 +38,45 @@ app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider,
       });
 }]);
 
-app.controller('AuthController', function(){
+app.factory('Auth', AuthService);
+function AuthService($firebaseAuth) {
+  var ref = new Firebase("https://angular-laundry.firebaseio.com");
+  return $firebaseAuth(ref);
+}
 
-});
-
-app.controller('HomeController', function ($scope, $location, $firebaseAuth) {
+app.controller('HomeController', function ($scope, $location, $firebaseAuth, Auth) {
+  var fb = new Firebase('https://angular-laundry.firebaseio.com');
   $scope.siteName = 'Angular Laundry';
   $scope.version = '1.0';
-  
-  profile = {
-    username: 'not logged in',
-    avatar: ''
-  };
+  $scope.auth = Auth;
 
-  $scope.userName = profile.username;
-  $scope.loginWithFacebook = function() {
-    var fb = new Firebase('https://angular-laundry.firebaseio.com');
+  $scope.auth.$onAuth(function(authData) {
+    if (authData === null) {
+      $('.logout').hide();
+    } else {
+      $('.logout').show();
+      $scope.authData = authData;
+      var name = $scope.authData.facebook.displayName;
+      $scope.fullName = name;
+      $scope.firstName = name.split(' ').slice(0, -1).join(' ');
+      $scope.avatar = $scope.authData.facebook.profileImageURL;
+    }
+  });
+
+  $scope.login = function() {
     fb.authWithOAuthPopup("facebook", function(error, authData) {
       if (error) {
         // Error Handling
       } else {
-        return profile = {
-          "username": authData.facebook.displayName,
-          "avatar": authData.facebook.profileImageURL
-        }
+        // Success
       }
     });
+  };
+
+  $scope.logout = function() {
+    fb.unauth();
+    window.localStorage.removeItem("firebase:session::angular-laundry");
+    location.reload();
   };
 });
 
