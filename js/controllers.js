@@ -7,8 +7,7 @@ laundryControllers.controller('LaundryListCtrl', function ($scope, $firebaseArra
   $scope.archives = $firebaseArray(fbArchives);
 
   $scope.archiveIt = function() {
-    var archiveJob = this.job;
-    $scope.archives.$add(archiveJob);
+    $scope.archives.$add(this.job);
     $scope.jobs.$remove(this.job);
     $location.path('/archives');
   };
