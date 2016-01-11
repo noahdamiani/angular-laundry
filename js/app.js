@@ -1,45 +1,56 @@
+$(document).foundation();
+
 var app = angular.module('app', [
   'ngLoadingSpinner',
   'firebase',
-  'ngRoute',
+  'ui.router',
   'laundryControllers',
   'angularMoment'
   ]);
 
-app.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-    when('/jobs', {
-      templateUrl: 'partials/laundry-list.html',
-      controller: 'LaundryListCtrl'
-    }).
-    when('/jobs/:jobId', {
-      templateUrl: 'partials/laundry-job.html',
-      controller: 'LaundryJobCtrl'
-    }).
-    when('/archives', {
-      templateUrl: 'partials/archives.html',
-      controller: 'LaundryArchiveCtrl'
-    }).
-    when('/archives/:archiveId', {
-      templateUrl: 'partials/archived-job.html',
-      controller: 'LaundryArchivedJobCtrl'
-    }).
-    when('/new_job', {
-      templateUrl: 'partials/new_job.html',
-      controller: 'NewJobCtrl'
-    }).
-    otherwise({
-      redirectTo: '/jobs'
-    });
-  }]);
+app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+    $urlRouterProvider.otherwise('/auth');
+    
+    $stateProvider
+      .state('auth', {
+        url: '/auth',
+        templateUrl: 'partials/auth/authView.html',
+        controller: 'AuthController as auth'
+      })
+      .state('laundryList', {
+        url: '/jobs',
+        templateUrl: 'partials/laundry-list.html',
+        controller: 'LaundryListCtrl'
+      })
+      .state('laundryJob', {
+        url: '/jobs/:jobId',
+        templateUrl: 'partials/laundry-job.html',
+        controller: 'LaundryJobCtrl'
+      })
+      .state('archives', {
+        url: '/archives',
+        templateUrl: 'partials/archives.html',
+        controller: 'LaundryArchiveCtrl'
+      })
+      .state('archivedJob', {
+        url: '/archives/:archiveId',
+        templateUrl: 'partials/archived-job.html',
+        controller: 'LaundryArchivedJobCtrl'
+      })
+      .state('newJob', {
+        url: '/new_job',
+        templateUrl: 'partials/new_job.html',
+        controller: 'NewJobCtrl'
+      });
+}]);
 
-app.controller('HomeController', function ($scope, $location) {
+app.controller('AuthController', function(){
+
+});
+
+app.controller('HomeController', function ($scope, $location, $firebaseAuth) {
   $scope.siteName = 'Angular Laundry';
   $scope.version = '1.0';
-  $scope.go = function (path) {
-    $location.path(path);
-  };
 });
 
 app.controller('NewJobCtrl', function ($scope, $firebaseArray, $location) {

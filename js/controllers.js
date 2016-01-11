@@ -13,8 +13,9 @@ laundryControllers.controller('LaundryListCtrl', function ($scope, $firebaseArra
   };
 });
 
-laundryControllers.controller('LaundryJobCtrl', function ($scope, $routeParams, $firebaseObject) {
-  var fb = new Firebase("https://angular-laundry.firebaseio.com/jobs/" + $routeParams.jobId);
+laundryControllers.controller('LaundryJobCtrl', function ($scope, $stateParams, $firebaseObject) {
+  var fb = new Firebase("https://angular-laundry.firebaseio.com/jobs/" + $stateParams.jobId);
+  console.log($stateParams);
   $scope.job = $firebaseObject(fb);
 });
 
@@ -23,7 +24,7 @@ laundryControllers.controller('LaundryArchiveCtrl', function ($scope, $firebaseA
   $scope.archives = $firebaseArray(archives);
 });
 
-laundryControllers.controller('LaundryArchivedJobCtrl', function ($scope, $routeParams, $firebaseObject) {
-  var archivedJob = new Firebase("https://angular-laundry.firebaseio.com/archives/" + $routeParams.archiveId);
+laundryControllers.controller('LaundryArchivedJobCtrl', function ($scope, $stateParams, $firebaseObject) {
+  var archivedJob = new Firebase("https://angular-laundry.firebaseio.com/archives/" + $stateParams.archiveId);
   $scope.archive = $firebaseObject(archivedJob);
 });
