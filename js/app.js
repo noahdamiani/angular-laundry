@@ -9,7 +9,7 @@ var app = angular.module('app', [
   ]);
 
 app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise('/auth');
+    $urlRouterProvider.otherwise('/jobs');
     $stateProvider
       .state('laundryList', {
         url: '/jobs',
