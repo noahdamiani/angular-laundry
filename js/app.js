@@ -51,6 +51,26 @@ app.controller('AuthController', function(){
 app.controller('HomeController', function ($scope, $location, $firebaseAuth) {
   $scope.siteName = 'Angular Laundry';
   $scope.version = '1.0';
+  
+  profile = {
+    username: 'not logged in',
+    avatar: ''
+  };
+
+  $scope.userName = profile.username;
+  $scope.loginWithFacebook = function() {
+    var fb = new Firebase('https://angular-laundry.firebaseio.com');
+    fb.authWithOAuthPopup("facebook", function(error, authData) {
+      if (error) {
+        // Error Handling
+      } else {
+        return profile = {
+          "username": authData.facebook.displayName,
+          "avatar": authData.facebook.profileImageURL
+        }
+      }
+    });
+  };
 });
 
 app.controller('NewJobCtrl', function ($scope, $firebaseArray, $location) {
