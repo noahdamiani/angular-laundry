@@ -5,13 +5,13 @@
 
 <ul class="all-jobs">
     <li ng-repeat="job in jobs" class="clearfix"> 
-        <a href="#/jobs/{{job.$id}}">
+        <a ui-sref="laundryJob({jobId: job.$id})">
             <div class="medium-2 columns"><span class="phone-number">{{job.phone | tel}}</span></div>
             <div class="medium-3 columns">{{job.createdAt | amCalendar}}</div>
             <div class="medium-3 columns">{{job.type}}</div>
             <div class="medium-2 columns">{{job.name}}</div>
             <div class="medium-2 columns">{{job.status.details}}</div>
-            <ul class="controls">
+            <ul class="controls" ng-if="loggedIn == true">
               <li><a class="delete-job" ng-click="jobs.$remove(job)"><i class="fa fa-trash"></i></a></li>
               <li><a class="archive-job" ng-click="archiveIt(job)"><i class="fa fa-archive"></i></a></li>
             </ul>

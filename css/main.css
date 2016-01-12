@@ -376,3 +376,7 @@ select[multiple] {
     padding-bottom: 0.5em;
     border-bottom: 1px solid #ddd;
 }
+
+hr {
+    margin-bottom: 0.4em;
+}
