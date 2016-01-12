@@ -1,1 +1,44 @@
-edit.html
+<ul class="breadcrumbs">
+  <li><a href="#/jobs">Home</a></li>
+  <li><a ui-sref="laundryJob({jobId: job.$id})">{{job.phone | tel}}</a></li>
+  <li>edit</li>
+</ul>
+
+<form ng-submit="updateJob()">
+    <div class="row">
+      <div class="small-8 columns">
+
+        <div class="row">
+          <div class="small-2 columns">
+            <label for="right-label" class="right inline">Name</label>
+          </div>
+          <div class="small-10 columns">
+            <input type="text" id="right-label" placeholder="First Name" ng-model="job.name">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-2 columns">
+            <label for="right-label" class="right inline">Phone #</label>
+          </div>
+          <div class="small-10 columns">
+            <input type="text" id="right-label" placeholder="Format: 1112223333" ng-model="job.phone" maxlength="10">
+          </div>
+        </div>
+
+        <div class="row">
+          <select ng-model="job.type" multiple>
+            <option value="Normal Wash and Fold" selected>Normal Wash and Fold</option>
+            <option value="Organic Wash and Fold">Organic Wash and Fold</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+    <div class="small-8 columns">
+      <div class="row">
+        <button type="submit" class="button" style="float:right" ui-sref="laundryJob({jobId: job.$id})">Save</button>
+      </div>
+    </div>
+    <div class="small-4 columns"></div>
+  </form>

@@ -21,6 +21,11 @@ app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider,
         templateUrl: 'views/laundry-job/job.html',
         controller: 'LaundryJobCtrl'
       })
+      .state('editJob', {
+        url: '/jobs/:jobId/edit',
+        templateUrl: 'views/laundry-job/edit.html',
+        controller: 'LaundryJobEditCtrl'
+      })
       .state('archives', {
         url: '/archives',
         templateUrl: 'views/archives/list.html',
@@ -28,7 +33,7 @@ app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider,
       })
       .state('archivedJob', {
         url: '/archives/:archiveId',
-        templateUrl: 'views/archivs/archived_job.html',
+        templateUrl: 'views/archives/archived_job.html',
         controller: 'LaundryArchivedJobCtrl'
       })
       .state('newJob', {
@@ -77,29 +82,6 @@ app.controller('HomeController', function ($scope, $location, $firebaseAuth, Aut
     fb.unauth();
     window.localStorage.removeItem("firebase:session::angular-laundry");
     location.reload();
-  };
-});
-
-app.controller('NewJobCtrl', function ($scope, $firebaseArray, $location) {
-  var fb = new Firebase("https://angular-laundry.firebaseio.com/jobs");
-  $scope.jobs = $firebaseArray(fb);
-  
-  $scope.addJob = function() {
-    var date = new Date();
-    var type = $scope.type;
-
-    $scope.jobs.$add({
-      name: $scope.firstName,
-      phone: $scope.phone,
-      createdAt: date.toString(),
-      type: type.toString(),
-      status: {
-        details: 'not started',
-        done: false
-      }
-    });
-
-    $location.path('/jobs');
   };
 });
 

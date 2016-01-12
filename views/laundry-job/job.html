@@ -6,13 +6,6 @@
 <div>
   <h1>{{job.name}} <small>{{job.phone | tel}}</small></h1>
   <p>Dropped off {{job.createdAt | amCalendar}}</p>
-  <p><strong>Notes:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sodales tempor velit, ac elementum augue aliquet sit amet. Etiam sit amet fermentum enim. Sed vitae dictum ante. </p>
+  <p><strong>{{job.type}}</strong></p>
+  <p><button class="button" ui-sref="editJob({jobId: job.$id})">Edit this job</button></p>
 </div>
-
-<h4>Update Status:</h4>
-<select>
-  <option value="{{job.status.details}}" selected>{{job.status.details}}</option>
-  <option value="in progress">in progress</option>
-  <option value="completed">completed</option>
-  <option value="picked up">picked up</option>
-</select>
