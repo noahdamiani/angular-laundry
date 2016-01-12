@@ -59,17 +59,17 @@ app.controller('HomeController', function ($scope, $location, $firebaseAuth, $ht
   $scope.siteName = 'Angular Laundry';
   $scope.version = '1.0';
   $scope.auth = Auth;
+  $scope.loggedIn = false;
 
   $scope.auth.$onAuth(function(authData) {
     if (authData === null) {
-      $('.logout').hide();
     } else {
-      $('.logout').show();
       $scope.authData = authData;
       var name = $scope.authData.facebook.displayName;
       $scope.fullName = name;
       $scope.firstName = name.split(' ').slice(0, -1).join(' ');
       $scope.avatar = $scope.authData.facebook.profileImageURL;
+      $scope.loggedIn = true;
     }
   });
 

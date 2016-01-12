@@ -7,5 +7,5 @@
   <h1>{{job.name}} <small>{{job.phone | tel}}</small></h1>
   <p>Dropped off {{job.createdAt | amCalendar}}</p>
   <p><strong>{{job.type}}</strong></p>
-  <p><button class="button" ui-sref="editJob({jobId: job.$id})">Edit this job</button></p>
+  <p><button class="button" ui-sref="editJob({jobId: job.$id})" ng-if="loggedIn == true">Edit this job</button></p>
 </div>

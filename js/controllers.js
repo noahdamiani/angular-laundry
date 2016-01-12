@@ -29,13 +29,12 @@ laundryControllers.controller('NewJobCtrl', function ($scope, $location, Jobs) {
   
   $scope.addJob = function() {
     var date = new Date();
-    var type = $scope.type;
 
     $scope.jobs.$add({
       name: $scope.jobName,
       phone: $scope.phone,
       createdAt: date.toString(),
-      type: type.toString(),
+      type: $scope.type[0],
       status: {
         details: 'not started',
         done: false
@@ -49,6 +48,7 @@ laundryControllers.controller('NewJobCtrl', function ($scope, $location, Jobs) {
 laundryControllers.controller('LaundryListCtrl', function ($scope, $location, Jobs, Archives) {
   $scope.jobs = Jobs;
   $scope.archives = Archives;
+
   $scope.archiveIt = function() {
     $scope.archives.$add(this.job);
     $scope.jobs.$remove(this.job);
