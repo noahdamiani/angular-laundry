@@ -13,27 +13,27 @@ app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider,
     $stateProvider
       .state('laundryList', {
         url: '/jobs',
-        templateUrl: 'partials/laundry-list.html',
+        templateUrl: 'views/laundry-list/list.html',
         controller: 'LaundryListCtrl'
       })
       .state('laundryJob', {
         url: '/jobs/:jobId',
-        templateUrl: 'partials/laundry-job.html',
+        templateUrl: 'views/laundry-job/job.html',
         controller: 'LaundryJobCtrl'
       })
       .state('archives', {
         url: '/archives',
-        templateUrl: 'partials/archives.html',
+        templateUrl: 'views/archives/list.html',
         controller: 'LaundryArchiveCtrl'
       })
       .state('archivedJob', {
         url: '/archives/:archiveId',
-        templateUrl: 'partials/archived-job.html',
+        templateUrl: 'views/archivs/archived_job.html',
         controller: 'LaundryArchivedJobCtrl'
       })
       .state('newJob', {
-        url: '/new_job',
-        templateUrl: 'partials/new_job.html',
+        url: '/new-job',
+        templateUrl: 'views/laundry-job/new/new_job.html',
         controller: 'NewJobCtrl'
       });
 }]);
