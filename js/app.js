@@ -9,8 +9,13 @@ var app = angular.module('app', [
   ]);
 
 app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise('/jobs');
+    $urlRouterProvider.otherwise('/');
     $stateProvider
+      .state('home', {
+        url: '/',
+        templateUrl: 'views/home.html',
+        controller: 'HomeController'
+      })
       .state('laundryList', {
         url: '/jobs',
         templateUrl: 'views/laundry-list/list.html',
@@ -49,7 +54,7 @@ function AuthService($firebaseAuth) {
   return $firebaseAuth(ref);
 }
 
-app.controller('HomeController', function ($scope, $location, $firebaseAuth, Auth) {
+app.controller('HomeController', function ($scope, $location, $firebaseAuth, $http, Auth) {
   var fb = new Firebase('https://angular-laundry.firebaseio.com');
   $scope.siteName = 'Angular Laundry';
   $scope.version = '1.0';
@@ -68,14 +73,12 @@ app.controller('HomeController', function ($scope, $location, $firebaseAuth, Aut
     }
   });
 
+  $http.get("https://api.github.com/repos/noahdamiani/angular-laundry/commits").then(function(response) {
+      $scope.commits = response.data.slice(0, 15);
+  });
+
   $scope.login = function() {
-    fb.authWithOAuthPopup("facebook", function(error, authData) {
-      if (error) {
-        // Error Handling
-      } else {
-        // Success
-      }
-    });
+    fb.authWithOAuthPopup("facebook", function(error, authData) {});
   };
 
   $scope.logout = function() {

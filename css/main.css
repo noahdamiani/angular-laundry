@@ -366,3 +366,13 @@ select[multiple] {
     height: 30px;
     margin-right: 0.5em;
 }
+
+.commits {
+    list-style: none;
+}
+
+.commits li {
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #ddd;
+}

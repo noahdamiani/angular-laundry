@@ -1,0 +1,4 @@
+<h1>Latest Updates</h1>
+<ul class="commits">
+  <li ng-repeat="item in commits"><strong>{{item.commit.author.date | amCalendar}}</strong> - <a href="{{item.html_url}}" target="_blank">{{item.commit.message}}</a></li>
+</ul>
