@@ -2,30 +2,46 @@ var laundryControllers = angular.module('laundryControllers', []);
 
 laundryControllers.factory('Jobs', getJobsService);
 function getJobsService($firebaseArray) {
-  var ref = new Firebase("https://angular-laundry.firebaseio.com/jobs/");
-  return $firebaseArray(ref);
+  return {
+    getJobs: function() {
+      var ref = new Firebase("https://angular-laundry.firebaseio.com/jobs/");
+      return $firebaseArray(ref);
+    }
+  }
 }
 
 laundryControllers.factory('Job', getJobService);
 function getJobService($firebaseObject, $stateParams) {
-  var ref = new Firebase("https://angular-laundry.firebaseio.com/jobs/" + $stateParams.jobId);
-  return $firebaseObject(ref);
+  return {
+    getJob: function() {
+      var ref = new Firebase("https://angular-laundry.firebaseio.com/jobs/" + $stateParams.jobId);
+      return $firebaseObject(ref); 
+    }
+  }
 }
 
 laundryControllers.factory('Archives', getArchivesService);
 function getArchivesService($firebaseArray) {
-  var ref = new Firebase("https://angular-laundry.firebaseio.com/archives/");
-  return $firebaseArray(ref);
+  return {
+    getArchives: function() {
+      var ref = new Firebase("https://angular-laundry.firebaseio.com/archives/");
+      return $firebaseArray(ref);
+    }
+  }
 }
 
 laundryControllers.factory('Archive', getArchiveService);
 function getArchiveService($firebaseObject, $stateParams) {
-  var ref = new Firebase("https://angular-laundry.firebaseio.com/archives/" + $stateParams.archiveId);
-  return $firebaseObject(ref);
+  return {
+    getArchive: function() {
+      var ref = new Firebase("https://angular-laundry.firebaseio.com/archives/" + $stateParams.archiveId);
+      return $firebaseObject(ref);
+    }
+  }
 }
 
 laundryControllers.controller('NewJobCtrl', function ($scope, $location, Jobs) {
-  $scope.jobs = Jobs;
+  $scope.jobs = Jobs.getJobs();
   
   $scope.addJob = function() {
     var date = new Date();
@@ -46,8 +62,8 @@ laundryControllers.controller('NewJobCtrl', function ($scope, $location, Jobs) {
 });
 
 laundryControllers.controller('LaundryListCtrl', function ($scope, $location, $stateParams, Jobs, Archives) {
-  $scope.jobs = Jobs;
-  $scope.archives = Archives;
+  $scope.jobs = Jobs.getJobs();
+  $scope.archives = Archives.getArchives();
   $scope.archiveIt = function() {
     $scope.archives.$add(this.job);
     $scope.jobs.$remove(this.job);
@@ -56,9 +72,7 @@ laundryControllers.controller('LaundryListCtrl', function ($scope, $location, $s
 });
 
 laundryControllers.controller('LaundryJobCtrl', function ($scope, $location, $stateParams, $firebaseObject, Job) {
-  //$scope.job = Job;
-  var fb = new Firebase("https://angular-laundry.firebaseio.com/jobs/" + $stateParams.jobId);
-  $scope.job = $firebaseObject(fb);
+  $scope.job = Job.getJob();
 });
 
 laundryControllers.controller('LaundryJobEditCtrl', function ($scope, Job) {
@@ -66,7 +80,7 @@ laundryControllers.controller('LaundryJobEditCtrl', function ($scope, Job) {
 });
 
 laundryControllers.controller('LaundryArchiveCtrl', function ($scope, Archives) {
-  $scope.archives = Archives;
+  $scope.archives = Archives.getArchives();
 });
 
 laundryControllers.controller('LaundryArchivedJobCtrl', function ($scope, $stateParams, $firebaseObject, Archive) {
