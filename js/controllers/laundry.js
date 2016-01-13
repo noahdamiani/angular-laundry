@@ -33,8 +33,8 @@ laundryControllers.controller('NewJobCtrl', function ($scope, $location, Jobs) {
 });
 
 laundryControllers.controller('LaundryListCtrl', function ($scope, $location, $stateParams, FireBase) {
-  $scope.jobs = FireBase.getArray('/jobs/');
-  $scope.archives = FireBase.getArray('/archives/');
+  $scope.jobs = FireBase.getArray('/jobs');
+  $scope.archives = FireBase.getArray('/archives');
   $scope.archiveIt = function() {
     $scope.archives.$add(this.job);
     $scope.jobs.$remove(this.job);
@@ -42,7 +42,7 @@ laundryControllers.controller('LaundryListCtrl', function ($scope, $location, $s
   };
 });
 
-laundryControllers.controller('LaundryJobCtrl', function ($scope, $location, $stateParams, FireBase) {
+laundryControllers.controller('LaundryJobCtrl', function ($scope, $location, $stateParams, FireBase) { 
   $scope.job = FireBase.getObject('/jobs/' + $stateParams.jobId);
 });
 
