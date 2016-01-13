@@ -21,7 +21,7 @@
   </div>
   <div class="top-bar-right">
     <ul class="menu top-user-nav" ng-if="loggedIn == true">
-        <li><img ng-src="{{avatar}}" /> <span>{{firstName}}</span> </li>
+        <li><img ng-src="{{avatar}}" /> <span> <a ui-sref="profile">{{firstName}}</a></span> </li>
         <li><button class="button logout" ng-click="logout()">Logout</button></li>
     </ul>
     <ul class="menu top-user-nav" ng-if="loggedIn == false">
@@ -64,6 +64,8 @@
 <script src="js/vendor/foundation.min.js"></script>
 <!-- Modules & Controllers -->
 <script src="js/app.js"></script>
-<script src="js/controllers.js"></script>
+<script src="js/controllers/laundry.js"></script>
+<script src="js/controllers/profile.js"></script>
+<script src="js/filters/tel.js"></script>
 </body>
 </html>
