@@ -56,5 +56,5 @@ laundryControllers.controller('LaundryArchiveCtrl', function ($scope, FireBase) 
 });
 
 laundryControllers.controller('LaundryArchivedJobCtrl', function ($scope, $stateParams, FireBase) {
-  $scope.archive = FireBase.getObject('/archive/' + $stateParams.archiveId);
+  $scope.archive = FireBase.getObject('/archives/' + $stateParams.archiveId);
 });
