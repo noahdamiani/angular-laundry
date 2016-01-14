@@ -14,8 +14,8 @@ function getFireBaseService($firebaseArray, $firebaseObject) {
   }
 }
 
-laundryControllers.controller('NewJobCtrl', function ($scope, $location, Jobs) {
-  $scope.jobs = Jobs.getJobs();
+laundryControllers.controller('NewJobCtrl', function ($scope, $location, FireBase) {
+  $scope.jobs = FireBase.getArray('/jobs');
   $scope.addJob = function() {
     var date = new Date();
     $scope.jobs.$add({
