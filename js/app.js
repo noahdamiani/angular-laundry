@@ -59,7 +59,7 @@ function AuthService($firebaseAuth) {
   return $firebaseAuth(fb);
 }
 
-app.controller('HomeController', function ($scope, $location, $firebaseAuth, $http, Auth) {
+app.controller('HomeController', function ($scope, $location, $http, $state, Auth) {
   $scope.siteName = 'Angular Laundry';
   $scope.version = '1.0';
   $scope.auth = Auth;
@@ -86,4 +86,13 @@ app.controller('HomeController', function ($scope, $location, $firebaseAuth, $ht
     window.localStorage.removeItem("firebase:session::angular-laundry");
     location.reload();
   };
+
+  $scope.guestLogin = function() {
+    $scope.loggedIn = true;
+    $scope.currentUser = {
+      displayName: "Guest User",
+      profileImageURL: "http://placehold.it/30x30"
+    }
+    $state.reload();
+  }
 });
