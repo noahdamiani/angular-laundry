@@ -68,10 +68,7 @@ app.controller('HomeController', function ($scope, $location, $firebaseAuth, $ht
     if (authData === null) {
     } else {
       $scope.authData = authData;
-      var name = $scope.authData.facebook.displayName;
-      $scope.fullName = name;
-      $scope.firstName = name.split(' ').slice(0, -1).join(' ');
-      $scope.avatar = $scope.authData.facebook.profileImageURL;
+      $scope.currentUser = $scope.authData.facebook;
       $scope.loggedIn = true;
     }
   });

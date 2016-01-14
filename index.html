@@ -21,7 +21,7 @@
   </div>
   <div class="top-bar-right">
     <ul class="menu top-user-nav" ng-if="loggedIn == true">
-        <li><img ng-src="{{avatar}}" /> <span> <a ui-sref="profile">{{firstName}}</a></span> </li>
+        <li><img ng-src="{{currentUser.profileImageURL}}" /> <span> <a ui-sref="profile">{{currentUser.displayName | firstName}}</a></span> </li>
         <li><button class="button logout" ng-click="logout()">Logout</button></li>
     </ul>
     <ul class="menu top-user-nav" ng-if="loggedIn == false">
@@ -32,7 +32,7 @@
 <div class="container">
     <div class="row">
         <div class="small-3 medium-2 columns">
-            <h1 ng-if="loggedIn == true">Hi {{firstName}}</h1>
+            <h1 ng-if="loggedIn == true">Hi {{currentUser.displayName | firstName}}</h1>
             <button class="button" ui-sref="newJob" ng-if="loggedIn == true">New Laundry Job</button><br>
             <ul class="side-nav">
                 <li><a ui-sref="home">Home</a></li>
