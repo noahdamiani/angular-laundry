@@ -1,12 +1,13 @@
 $(document).foundation();
 
+var fb = new Firebase('https://angular-laundry.firebaseio.com');
 var app = angular.module('app', [
   'ngLoadingSpinner',
   'firebase',
   'ui.router',
   'laundryControllers',
   'angularMoment'
-  ]);
+]);
 
 app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
   $urlRouterProvider.otherwise('/');
@@ -55,12 +56,10 @@ app.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider,
 
 app.factory('Auth', AuthService);
 function AuthService($firebaseAuth) {
-  var ref = new Firebase("https://angular-laundry.firebaseio.com");
-  return $firebaseAuth(ref);
+  return $firebaseAuth(fb);
 }
 
 app.controller('HomeController', function ($scope, $location, $firebaseAuth, $http, Auth) {
-  var fb = new Firebase('https://angular-laundry.firebaseio.com');
   $scope.siteName = 'Angular Laundry';
   $scope.version = '1.0';
   $scope.auth = Auth;
@@ -78,13 +77,11 @@ app.controller('HomeController', function ($scope, $location, $firebaseAuth, $ht
   });
 
   $http.get("https://api.github.com/repos/noahdamiani/angular-laundry/commits").then(function(response) {
-    $scope.commits = response.data.slice(0, 15);
+    $scope.commits = response.data.slice(0, 10);
   });
 
   $scope.login = function() {
-    fb.authWithOAuthPopup("facebook", function(error, authData) {
-      console.log(authData);
-    });
+    fb.authWithOAuthPopup("facebook", function(error, authData) {});
   };
 
   $scope.logout = function() {
